@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>中国图计算挑战赛--参赛作品提交</title>
+	<!-- Bootstrap Styles-->
+	<link href="assets/css/bootstrap.css" rel="stylesheet" />
+	<!-- FontAwesome Styles-->
+	<link href="assets/css/font-awesome.css" rel="stylesheet" />
+	<!-- Custom Styles-->
+	<link href="assets/css/custom-styles.css" rel="stylesheet" />
+	<!-- Google Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+	<div id="wrapper">
+		<nav class="navbar navbar-default top-navbar" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">
+					<img src="picture/logo.png" style="height:50px">
+					中国图计算挑战赛 China Graph Challenge</a>
+			</div>
+		</nav>
+		<!--/. NAV TOP  -->
+		<nav class="navbar-default navbar-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav" id="main-menu">
+					<li>
+						<a href="index.html"><i class="fa fa-desktop"></i>比赛介绍</a>
+					</li>
+					<li>
+						<a href="topic.html"><i class="fa fa-dashboard"></i>比赛题目</a>
+					</li>
+					<li>
+						<a href="schedule.html"><i class="fa fa-table"></i>赛事安排</a>
+					</li>
+					<li>
+						<a href="registration.html"><i class="fa fa-qrcode"></i>参赛队伍报名</a>
+					</li>
+					<li>
+						<a href="submission.html" class="active-menu"><i class="fa fa-edit"></i>参赛作品提交</a>
+					</li>
+					<li>
+						<a href="contact.html"><i class="fa fa-phone"></i>联系方式</a>
+					</li>
+				</ul>
+
+			</div>
+
+		</nav>
+		<!-- /. NAV SIDE  -->
+		<div id="page-wrapper">
+			<div id="page-inner">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="page-header">
+							参赛作品提交
+						</h1>
+						<h3>
+							提交材料
+						</h3>
+						<p style="line-height:30px">
+							参赛队伍必须创建自己的GitHub账户，并在2024年7月20日23:59之前将参赛作品按照提交规范上传到Github账户中，并将项目的Github地址发送至邮箱<b>ccfcomputility_cgc@outlook.com</b>。项目应以cgc+自己队伍的英文名进行命名，例如：<b>cgc_your_team_name</b>。
+						</p>
+						<br>
+						<h3>
+							Github项目文件结构
+						</h3>
+						<br>
+						<div class="language-plaintext highlighter-rouge">
+							<div class="highlight">
+								<pre class="highlight"><code>cgc_your_team_name
+├── your_team_name
+│   	├── source_code.cpp
+│   	├── makefile
+│   	└── README
+├── your_team_name_report
+│   	└── report.pdf
+└── your_team_name.exe</code></pre>
+							</div>
+						</div>
+						<br>
+						<h3>
+							包含文件
+						</h3>
+						<p style="line-height:30px">
+							1. 程序源代码 <br>
+							包含完整源代码<b>source_code.cpp</b>，执行makefile文件应可编译出可执行文件（以英文队伍名.exe进行命名，例如：<b>your_team_name.exe</b>），并将生成的可执行文件放在上级目录中，即目标为<b>../your_team_name.exe</b>。
+							如果使用了第三方库，请在<b>/your_team_name/README</b>中详细说明安装和使用方法, 同时注意测试环境与本地保持一致，若无法复现将视为计算结果错误。
+						</p>
+						<p style="line-height:30px">
+							2. 技术报告文档 <br>
+							报告文档命名为<b>report.pdf</b>，内容包括但不限于基本算法介绍、设计思路和方法、算法优化、详细算法设计与实现、实验结果与分析、程序代码模块说明、详细程序代码编译说明、详细代码运行使用说明等。<br>
+							注意提交压缩包中无需包含数据集等文件，只需以上文件。
+						</p>
+						<br>
+						<h3>
+							测试方式
+						</h3>
+						<p style="line-height:30px">
+							可执行程序需接收7个参数，分别为：输入顶点特征长度、第一层顶点特征长度、第二层顶点特征长度、图结构文件名、输入顶点特征矩阵文件名、第一层权重矩阵文件名、第二层权重矩阵文件名。</p>
+						<p style="line-height:30px">
+							例如：<b>./your_team_name.exe 64 16 8 graph/1024_example_graph.txt embedding/1024.bin weight/W_64_16.bin
+								weight/W_16_8.bin。</b>
+						</p>
+						<p style="line-height:30px">
+							可执行程序需打印输出两个值，分别为最大的顶点特征矩阵行和执行时间,具体参考样例中<b>your_team_name/gcn.cpp</b>
+							输入的文件名均包含相对路径。
+						</p>
+						<p style="line-height:30px">
+							图结构文件为文本文件，第一行两个整数分别为图顶点数量（<i>v_num</i>）和边数量，之后每一行为一条边，格式为“源顶点id 目的顶点id”，顶点id从0开始
+							图结构文件中包含自环（即有边“i i”），包含反向边（即同时有边“i j”和边“j i”）。
+						</p>
+						<p style="line-height:30px">
+							输入顶点特征矩阵文件为二进制文件，包含<img src="picture/formula14.png" height="22">个float32，大小为<img
+								src="picture/formula15.png" height="22">字节，
+							第一层权重矩阵文件为二进制文件，包含<img src="picture/formula16.png" height="22">个float32，大小为<img
+								src="picture/formula17.png" height="22">字节，
+							第二层权重矩阵文件为二进制文件，包含<img src="picture/formula18.png" height="22">个float32，大小为<img
+								src="picture/formula19.png" height="22">字节。<br>
+							读取文件、分配内存、和数组初始化置0的时间均不统计在执行时间内，但预处理时间（例如顶点排序）等须计入执行时间。
+						</p>
+						<p style="line-height:30px">
+							具体参考样例中<b>your_team_name/gcn.cpp。</b>
+						</p>
+						<p style="line-height:30px">
+							注：读取文件必须使用样例中<b>your_team_name/gcn.cpp</b>文件内提供的<b>readGraph()</b>函数，不可修改，不计入执行时间内，若需转换为邻接表或是CSR等格式须在<b>somePreprocessing()</b>函数内实现，并计入执行时间。
+						</p>
+						<br>
+						<h3>
+							所提交作品的最终评测（打分）环境
+						</h3>
+						<p style="line-height:30px">
+							CPU：Intel Xeon Gold 5117 @2.00GHz（物理核心数28，逻辑核心数56）<br>
+							内存：512GB<br>
+							操作系统：Ubuntu 21.10<br>
+							g++或gcc编译器：9.4.0<br>
+						</p>
+						<p style="line-height:30px">
+							注：上述仅表明最后测试代码时用的环境配置，不对选手进行开放，选手可使用自己可获得的平台进行代码测试，我们将在提交截止日期后在上述环境中为每组的作品做测试并且打分。
+						</p>
+						<br>
+						<h3>
+							评分方式
+						</h3>
+						<p>
+							对于结果正确的队伍，将结合其性能（80分）和报告文档（20分）计算总分，结果错误的队伍为0分。
+						</p>
+					</div>
+				</div>
+				<!-- /. PAGE INNER  -->
+			</div>
+			<!-- /. PAGE WRAPPER  -->
+		</div>
+		<!-- /. WRAPPER  -->
+		<!-- JS Scripts-->
+		<!-- jQuery Js -->
+		<script src="assets/js/jquery-1.10.2.js"></script>
+		<!-- Bootstrap Js -->
+		<script src="assets/js/bootstrap.min.js"></script>
+		<!-- Metis Menu Js -->
+		<script src="assets/js/jquery.metisMenu.js"></script>
+		<!-- Custom Js -->
+		<script src="assets/js/custom-scripts.js"></script>
+
+
+</body>
+
+</html>
